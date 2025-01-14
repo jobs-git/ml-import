@@ -1,0 +1,3 @@
+[submodule "openalex-data-miner"]
+	path = openalex-data-miner
+	url = https://github.com/jobs-git/openalex-data-miner.git
