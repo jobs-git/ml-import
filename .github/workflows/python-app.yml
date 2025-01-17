@@ -27,8 +27,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        python -m pip install -r openalex-data-miner/requirements.tx
         
-
     - name: Run Python script
       run: |
         for d in $(find . -type d -name ".git"); do
