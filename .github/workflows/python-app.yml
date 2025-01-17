@@ -27,13 +27,14 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        
 
     - name: Run Python script
       run: |
         for d in $(find . -type d -name ".git"); do
           module_dir=$(dirname "$d")
           if [ -f "$module_dir/requirements.txt" ]; then
-            pip install -r "$module_dir/requirements.txt"
+            python -m pip install -r "$module_dir/requirements.txt"
             python test.py
           fi
         done
