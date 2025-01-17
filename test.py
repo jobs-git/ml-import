@@ -1,18 +1,19 @@
 import os
 import subprocess
 
-def find_git_dirs():
-    git_dirs = []
-    for root, dirs, files in os.walk('.'):
-        if '.git' in dirs:
-            git_dirs.append(root)
-    return git_dirs
+def get_submodule_paths():
+    submodule_paths = []
+    with open('.gitmodules') as file:
+        for line in file:
+            if 'path =' in line:
+                path = line.strip().split('= ')[1]
+                submodule_paths.append(path)
+    return submodule_paths
 
-for d in find_git_dirs():
-    if d != '.':
-        os.chdir(d)
-        print (f"Entering {d}")
-        if os.path.isfile('requirements.txt'):
-            subprocess.run(['pip', 'install', '-r', 'requirements.txt'], check=True)
-        subprocess.run(['python', 'test.py'], check=True)
-        os.chdir('..')
+submodule_paths = get_submodule_paths()
+
+for module_dir in submodule_paths:
+    print(f"Entering {module_dir}")
+    if os.path.isfile(os.path.join(module_dir, 'requirements.txt')):
+        subprocess.run(['pip', 'install', '-r', os.path.join(module_dir, 'requirements.txt')], check=True)
+    subprocess.run(['python', os.path.join(module_dir, 'test.py')], check=True)
