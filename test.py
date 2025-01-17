@@ -11,6 +11,7 @@ def find_git_dirs():
 for d in find_git_dirs():
     if d != '.':
         os.chdir(d)
+        print (f"Entering {d}")
         if os.path.isfile('requirements.txt'):
             subprocess.run(['pip', 'install', '-r', 'requirements.txt'], check=True)
         subprocess.run(['python', 'test.py'], check=True)
