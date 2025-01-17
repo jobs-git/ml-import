@@ -1,6 +1,8 @@
 [submodule "openalex-data-miner"]
 	path = openalex-data-miner
 	url = https://github.com/jobs-git/openalex-data-miner
+	branch = main
 [submodule "ml-nlp-classifier"]
 	path = ml-nlp-classifier
-	url = https://github.com/jobs-git/ml-nlp-classifier.git
+	url = https://github.com/jobs-git/ml-nlp-classifier
+	branch = main
