@@ -28,14 +28,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
 
-    - name: Initialize and update submodules
-      run: |
-        git submodule update --init --recursive
-
-    - name: Print directory structure
-      run: |
-        ls -R
-
     - name: Run Python script
       run: |
-        python test.py
+        for d in $(find . -type d -name ".git"); do
+          module_dir=$(dirname "$d")
+          if [ -f "$module_dir/requirements.txt" ]; then
+            pip install -r "$module_dir/requirements.txt"
+            python test.py
+          fi
+        done
