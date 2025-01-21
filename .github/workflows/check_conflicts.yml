@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Python application
+name: Conflict check
 
 on:
   push:
@@ -37,4 +37,4 @@ jobs:
         
     - name: Run conflict check
       run: |
-        python -u check_conflicts.py
+        python -u test_conflicts.py
