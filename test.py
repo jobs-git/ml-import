@@ -24,7 +24,7 @@ for module_dir in submodule_paths:
             print("stderr:", result.stderr)
             raise Exception(f"Failed to install requirements in {module_dir}")
 
-    result = subprocess.run(['python', 'test.py'], capture_output=True, text=True)
+    result = subprocess.run(['python', '-u', 'test.py'], capture_output=True, text=True)
     if result.returncode != 0:
         print("Test failed")
         print("stdout:", result.stdout)
