@@ -12,6 +12,7 @@ def get_submodule_paths():
 
 submodule_paths = get_submodule_paths()
 
+# initiate test runs
 for module_dir in submodule_paths:
     os.chdir(module_dir)
     print(f"Entering {module_dir}")
